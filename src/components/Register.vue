@@ -1,44 +1,76 @@
 <template>
-    <form @submit.prevent="handleSubmit" class=exemple-pattern-css >
-        <h1 class="h3 mb-3 fw-normal">Inscription :</h1>
-        <label for="email">Votre email :
-     <input v-model="email"  type="email" class="form-control" placeholder="Email" 
+    <!-- Formulaire Signup -->
+    <div class="form-container">
+        <h1 class="formTitle">S'inscrire</h1>
+        <form @submit.prevent="signUp"  action="" id="form" class="validation">
+            <div class="form-input">
+                <label for="email"></label>
+                <input v-model="email"  type="email" class="form-control" placeholder="Email" 
       aria-required="true" aria-invalid="true" />
-   <span>Veuillez respecter le format de l'email (exemple@domaine.fr)</span>
-</label>
-        <label for="email">Votre pseudo :
-        <input type="text" v-model="username" pattern="^[a-z0-9_-]{3,16}$" class="form-control" placeholder="Pseudo" required aria-required="true" aria-invalid="true" />
-        <span>Votre pseudo dois contenire entre 3 et 16 caractère en minuscule </span>
-        </label>
-        <label for="password">Mots de passe :
-     <input type="password"  v-model="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password" aria-required="true" aria-invalid="true"> 
-     <span>Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères ou plus</span>     
-      </label>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Créer mon compte</button>  
-    </form>
+            </div>
+            <div class="form-input">
+                <label for="username"></label>
+                <input type="text" v-model="username" class="form-control" placeholder="Pseudo" required aria-required="true" aria-invalid="true" />
+            </div>
+            <div class="form-input
+            ">
+                <label for="password"></label>
+                <input type="password"  v-model="password" class="form-control" placeholder="Password" aria-required="true" aria-invalid="true"> 
+            </div>
+            <div class="submitContainerBtn">
+                <input type="submit" class="submitBtn" value="S'inscrire !" />
+            </div>
+           <div class="ContainerMsgErr">
+            <p class="signupMsgErr">{{ signupErrorMsg }}</p>
+            </div>
+        </form>
+        
+    </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 export default {
-    name: "Register",
-    data() {
+    name: 'Signup',
+    data () {
         return {
-            email: "",
-            username: "",
-            password: "",
+            // Récupérer les entrées utilisateur grâce à v-model
+            email: '',
+            username: '',
+            password: '',
+            signupErrorMsg: '',
+            // Vérification des entrées utilisateur
+            nameRegex: /^[a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ- ']{1,30}$/,
+            emailRegex: /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/,
+            passwordRegex: /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/,
         }
     },
-    methods: {
-        async handleSubmit(){
-          await axios.post("http://localhost:3000/api/users/register", {
-            
-                email: this.email,
-                username: this.username,
-                password: this.password
+    methods:{
+        // Envoi des informations utilisateur vers la Backend pour créer un nouveau compte
+        signUp() {
+            let emailCheck = this.emailRegex.test(this.email);
+            let usernameCheck = this.nameRegex.test(this.username);
+            let passwordCheck = this.passwordRegex.test(this.password);
+            if (emailCheck == false) {
+                this.signupErrorMsg = 'Email invalide'
+            } else if (usernameCheck == false) {
+                this.signupErrorMsg = 'Username est invalide'
+            } else if (passwordCheck == false) {
+                this.signupErrorMsg = 'Mot de passe doit contenir entre 6 et 20 caractères, minimum 1 majuscule, 1 minuscule et 1 chiffre'
+            } else {
+                const userData = new FormData();
+                userData.append('email', this.email);
+                userData.append('username', this.username);
+                userData.append('password', this.password);
+                console.log(userData)
+                axios.post('http://localhost:3000/api/users/register', {  
                
-        });
-       
-       this.$router.push('/login')
+                    email: this.email,
+                username: this.username,
+                password: this.password,
+                
+            })
+        
+            }
 }}}
 </script>

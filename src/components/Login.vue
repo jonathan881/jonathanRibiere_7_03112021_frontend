@@ -1,7 +1,6 @@
 <template >
 
 <div id="template">
-    <Header />
  <form @submit.prevent="login" class="contenair" >
      <h1 class="contenair_titre">Connexion :</h1>
      <div>

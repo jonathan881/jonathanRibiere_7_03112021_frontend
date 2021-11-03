@@ -5,7 +5,10 @@
 					<div class=""></div>
 					
 					<p class="">Email</p>
-					<div class="">{{ todo.userId }}</div>
+					<div class="">
+            <p>{{ userId.email }}
+            </p>
+          </div>
 				</div>
 
 				<button @click="modifyProfile" class="">Enregister <i class=""></i></button>

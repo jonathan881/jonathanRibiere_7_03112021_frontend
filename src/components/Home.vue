@@ -43,7 +43,8 @@ export default {
   
      data() {
       return {
-        todos: []
+        todos: [],
+        id: 'Number',
         
       };  
     },
