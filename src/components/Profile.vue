@@ -1,4 +1,16 @@
 <template>
+
+<div class="">
+					<p class="">Pseudo</p>
+					<div class=""></div>
+					
+					<p class="">Email</p>
+					<div class="">{{ todo.userId }}</div>
+				</div>
+
+				<button @click="modifyProfile" class="">Enregister <i class=""></i></button>
+			
+
    <div class="profile">
       <h1>Pour supprimer votre compte, il suffit de clicker sur se boutton : </h1>
    </div>
@@ -16,22 +28,25 @@ import axios from "axios";
 
 export default {
   name: "Profile",
-   data: () => {
+   data(){
     return {
-      users: [],
+      userId: "",
       };
     },
-
+    created() {
+      this.displayProfile();
+    },
+  //props: ['users'] ,
   methods: {
   //Profil d'un user
-  async created() {
-    try {
-      const res = await axios.get("http://localhost:3000/api/users/profile");
-      this.users = res.data;
-    } catch (e) {
-      console.error(e);
-    }
-  },
+    displayProfile() { 
+      const userId = localStorage.getItem('userId');
+      axios.get('http://localhost:3000/api/users/' + userId, {
+        headers: {
+						Authorization: 'Bearer ' + localStorage.getItem('token')
+					}
+				})
+    },
 
     deleteAccount() {
       axios

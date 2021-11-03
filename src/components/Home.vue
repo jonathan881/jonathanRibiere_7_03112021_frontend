@@ -9,6 +9,7 @@
       Vous avez déjà un compte : <router-link to="/login">Connexion</router-link><br>
       Sinon pas de souci l'inscription c'est par ici : <router-link to="/register">Inscription</router-link>
     </p>
+    
   </div>
   </div>
 <div id="app">
@@ -20,7 +21,7 @@
       <div class="title">
         <h2>Titre : {{ todo.title }}</h2> 
       </div>
-  <div v-if="todo.attachment">
+  <div>
      <img class="image-post" v-bind:src=todo.attachment title="post-img" />
   </div>
   <div class="description">
@@ -29,6 +30,7 @@
   <div class="date">
     {{ todo.createdAt }}
   </div>
+  
   </div>
 </div>
 </template>
@@ -38,21 +40,27 @@ import Header from './Header.vue'
 import axios from "axios";
 export default {
   name: 'Home',
+  
      data() {
       return {
         todos: []
         
       };  
     },
-  async created() {
-    try {
-      const res = await axios.get(`http://localhost:3000/api/messages`);
-        this.todos = res.data;
-        console.log(res);
-      } catch (e) {
-      console.error(e);
-    }
-  },
+       created() {
+                axios.get('http://localhost:3000/api/messages', {
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(response => {
+                    this.todos = response.data;
+                    console.log(response);
+    
+                })
+              
+            },
   
   components: {
     Header,

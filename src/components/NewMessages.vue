@@ -68,11 +68,12 @@ export default {
                 },              
             })  
                 .then(() => {
-                    window.location.reload()
+                    //window.location.reload()
+                    this.$router.push('/')  
                 })          
                 .catch(error => console.log(error))
                  
-            this.$router.push('/')       
+            //this.$router.push('/')       
         },
          
     }
