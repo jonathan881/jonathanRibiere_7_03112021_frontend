@@ -1,19 +1,6 @@
 <template >
-  <div>
-  <div class="home">
-    <img alt="Groupomania logo" src="../assets/icon-above-font.png">
-    "Bienvenue sur le réseau social interne pour les employés de Groupomania"
-  </div>
-  <div class="hello">
-    <p>
-      Vous avez déjà un compte : <router-link to="/login">Connexion</router-link><br>
-      Sinon pas de souci l'inscription c'est par ici : <router-link to="/register">Inscription</router-link>
-    </p>
-    
-  </div>
-  </div>
+
 <div id="app">
-  <Header />
   <div class="post" v-for="todo of todos" :key="todo.id" >
     <div> 
     <p class="userName">Message envoyée par : {{ todo.User.username }} {{todo.id}}</p> 
@@ -36,7 +23,6 @@
 </template>
 
 <script>
-import Header from './Header.vue'
 import axios from "axios";
 export default {
   name: 'Home',
@@ -64,7 +50,7 @@ export default {
             },
   
   components: {
-    Header,
+  
   }
 }
 </script>

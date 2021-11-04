@@ -1,9 +1,9 @@
 <template>
     <nav class="header">
         <div class="header_titre">
-            <p>Groupomania</p>
+          <a href="http://localhost:8081/">Groupomania</a>
         </div>
-        <div class="header_btn">
+        <div class="header_btn" v-show="userConnected">
         <div class="header_btn-a">
           <router-link to="/profile">Mon profile</router-link>
         </div> 
@@ -22,6 +22,16 @@
 <script>
 export default {
   name: "Header",
+   computed: {
+      // Vérifier si l'utilisateur est connecté
+      userConnected() {
+        if(this.$route.path == "/register" || this.$route.path == "/login" ) {
+        return false
+        } else {
+        return true
+        }
+      }
+    },
   methods: {
     handleClick() {
       localStorage.removeItem('token');

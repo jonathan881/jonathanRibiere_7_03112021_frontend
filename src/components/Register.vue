@@ -24,7 +24,10 @@
             <p class="signupMsgErr">{{ signupErrorMsg }}</p>
             </div>
         </form>
-        
+        <div>
+            Vous avez déjà un compte : <router-link to="/login">Connexion</router-link>
+
+        </div>
     </div>
 </template>
 
@@ -72,5 +75,6 @@ export default {
             })
         
             }
+            this.$router.push('/login')
 }}}
 </script>

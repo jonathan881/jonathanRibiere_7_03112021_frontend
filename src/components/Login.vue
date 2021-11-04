@@ -18,6 +18,9 @@
      </div>
      <button  class="" type="submit">Connexion</button>
   </form>
+  <div>
+    Sinon pas de souci l'inscription c'est par ici : <router-link to="/register">Inscription</router-link>
+  </div>
 </div>
 </template>
 

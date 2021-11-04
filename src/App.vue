@@ -6,21 +6,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Header from '@/components/Header'
+import Header from './components/Header.vue'
 export default {
   name: 'app',
- components: Header,
-  data() {
-      return {
-        userId: ""
-      }
-    },
-      async created() {
-      const response = await axios.get('users/profile')
-      this.user = response.data;
-      console.log(response);
-    },    
+ components:{  Header}
 }
 </script>
 
