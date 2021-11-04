@@ -5,7 +5,7 @@
         </div>
         <div class="header_btn" v-show="userConnected">
         <div class="header_btn-a">
-          <router-link to="/profile">Mon profile</router-link>
+          <router-link to="/profile">Profile</router-link>
         </div> 
           <div class="header_btn-a">
           <router-link to="/messages/new">Publier</router-link>
@@ -53,7 +53,6 @@ export default {
     justify-content: space-between;
     width: 100%;
     background-color: #d4545c;
-    margin-bottom: 3rem;
 }
 .header_titre{
     width: 30%;
@@ -64,11 +63,12 @@ export default {
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
-        margin-top: 16px;
+    margin-top: 16px;
     
 }
 .header_btn-a{
     margin-right: 10px;
+    
     
 }
 

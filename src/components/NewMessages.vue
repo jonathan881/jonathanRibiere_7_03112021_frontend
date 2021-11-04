@@ -1,19 +1,26 @@
 <template>
-    <form @submit.prevent="createPost">
-                <textarea  class="form-control" required placeholder="Titre de votre post (50 caractères max)"
+<div class="message"> 
+<div class="">
+            <h1>Que voulez-vous partager aujourd'hui ?</h1>
+        </div>
+    <form @submit.prevent="createPost" class="form">
+        <h2>Titre de votre message :</h2>
+        <div>
+            <textarea  class="form-control" required placeholder="50 caractères max"
                 aria-label="Titre du post"  name="title" v-model="title"
                 ></textarea>
-                <div id="preview" v-if="preview">
+        </div>
+         <div id="preview" v-if="preview">
                 <img class="preview" :src="preview" :alt="preview">
             </div>                        
-                <div class="form-group">Choisir une image (jpg, gif, png)>
+                <div class="form-group">Choisir une image (jpg, gif, png)> <br>
                 <label>Ajouter une photo   <small>(optionnel)</small></label>
-                    <input title="post-img" type="file" ref="file"  enctype="multipart/form-data" name="file"  id="file" @change="selectFile">    
+                    <input title="post-img" type="file" ref="file"  enctype="multipart/form-data" name="file" class="selectImage"  id="file" @change="selectFile">    
                     </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea rows="5" required v-model="content" class="form-control"  name="image" ></textarea>
+                    <textarea rows="5" required v-model="content" class="form-control"  name="image" placeholder="300 caractères max, sans caractère spécial" ></textarea>
                     </div>
                 <br>
                 <div class="form-group">
@@ -21,6 +28,7 @@
                     </div>
                 <p>{{errMsg}}</p> 
             </form>
+            </div>
 </template>
 
 <script>
@@ -79,3 +87,26 @@ export default {
     }
 }
 </script>
+<style  scoped>
+.message{
+    width: 100%;
+}
+h1{
+    font-size: initial;
+}
+.form {  
+    border: solid 2px;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+h2{
+    font-size: initial;
+}
+.form-group{
+    font-size: small;
+}
+.selectImage{
+    width: 80%;
+}
+</style>

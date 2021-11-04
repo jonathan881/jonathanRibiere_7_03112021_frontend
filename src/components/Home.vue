@@ -1,6 +1,7 @@
 <template >
 
 <div id="app">
+  <div>Partager avec nous vos souvenire</div>
   <div class="post" v-for="todo of todos" :key="todo.id" >
     <div> 
     <p class="userName">Message envoyée par : {{ todo.User.username }} {{todo.id}}</p> 
@@ -78,7 +79,7 @@ h2{
 }
 img{
   width: 16rem;
-  height: 16rem;
+  height: 8rem;
 }
 h3 {
   margin: 40px 0 0;
