@@ -1,13 +1,13 @@
 <template >
 
 <div id="app">
-  <div>Partager avec nous vos souvenire</div>
+  <div class="app_titre">Partager avec nous vos souvenire :</div>
   <div class="post" v-for="todo of todos" :key="todo.id" >
     <div> 
-    <p class="userName">Message envoyée par : {{ todo.User.username }} {{todo.id}}</p> 
+    <p class="userName">Message envoyée par : {{ todo.User.username }}</p> 
     </div> 
       <div class="title">
-        <h2>Titre : {{ todo.title }}</h2> 
+        <h2>Titre du post : {{ todo.title }}</h2> <p></p>
       </div>
   <div>
      <img v-if="todo.attachment" class="image-post" v-bind:src=todo.attachment title="post-img" />
@@ -58,6 +58,11 @@ export default {
   width: 100%;
   background-color: #1c2c49;
 }
+.app_titre{
+  color: darkseagreen;
+  font-size: larger;
+  padding: 1rem;
+}
 .post{
   border: solid #d83c50;
   border-radius: 5px;
@@ -65,6 +70,7 @@ export default {
   background-color:  #b0acb4;
   width: 80%;
   margin-left: 10%;
+  box-shadow: 0px 7px 16px black;
 }
 .userName{
   margin-top: 5px;

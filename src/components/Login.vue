@@ -12,8 +12,8 @@
      </div>
      <div>
       <label for="password">Mots de passe :
-     <input type="password"  v-model="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="" placeholder="Password" aria-required="true" aria-invalid="true"> <br>
-     <span>Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères ou plus</span>     
+     <input type="password"  v-model="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" class="" placeholder="Password" aria-required="true" aria-invalid="true"> <br>
+     <span>Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 6 caractères ou plus</span>     
       </label>
      </div>
      <button  class="" type="submit">Connexion</button>
@@ -65,6 +65,7 @@ border-radius: 30px;
 background-color:  #b0acb4;
 width: 60%;
 margin-left: 20%;
+margin-top: 40px;
 }
 
 </style>

@@ -115,6 +115,9 @@ export default {
 </script>
 
 <style scoped>
+.profile-container{
+  margin-top: 1rem;
+}
 h1{
   font-size: 1rem;
 }

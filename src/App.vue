@@ -2,14 +2,16 @@
 <div id="app">
   <Header />
   <router-view />
+  <Footer />
 </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'app',
- components:{  Header}
+ components:{  Header, Footer}
 }
 </script>
 
@@ -23,18 +25,8 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-bottom: 2rem;
 }
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

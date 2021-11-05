@@ -92,6 +92,7 @@ export default {
     width: 100%;
 }
 h1{
+    margin-top: 1rem;
     font-size: initial;
 }
 .form {  

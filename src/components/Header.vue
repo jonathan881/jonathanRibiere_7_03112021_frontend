@@ -1,17 +1,17 @@
 <template>
     <nav class="header">
         <div class="header_titre">
-          <a href="http://localhost:8081/">Groupomania</a>
+          <a class="titre" href="http://localhost:8081/">Groupomania</a>
         </div>
         <div class="header_btn" v-show="userConnected">
         <div class="header_btn-a">
-          <router-link to="/profile">Profile</router-link>
+          <router-link to="/profile"><i class="fas fa-user"></i></router-link>
         </div> 
           <div class="header_btn-a">
-          <router-link to="/messages/new">Publier</router-link>
+          <router-link to="/messages/new"><i class="fas fa-comment"></i></router-link>
         </div> 
         <div>
-          <a class="header_btn-b" v-on:click="logout" href="/login" >Se deconnecter</a>
+          <a class="header_btn-b" v-on:click="logout" href="/login" ><i class="fas fa-door-open"></i></a>
         </div>         
         </div>
     </nav>
@@ -53,10 +53,20 @@ export default {
     justify-content: space-between;
     width: 100%;
     background-color: #d4545c;
+    box-shadow: 0px 3px 5px black;
 }
 .header_titre{
     width: 30%;
     color: antiquewhite;
+    margin-top: 16px;
+    font-size: initial;
+}
+.titre{
+  color: #1c2c49;
+}
+a{
+    font-family: inherit;
+    text-decoration: none;
 }
 .header_btn{
     width: 50%;
@@ -67,9 +77,18 @@ export default {
     
 }
 .header_btn-a{
-    margin-right: 10px;
+    margin-right: 2rem;
+    font-size: 1.5rem;
     
     
+}
+.header_btn-b{
+    font-size: 1.5rem;
+    
+    
+}
+.fas {
+  color: #1c2c49;
 }
 
 </style>
