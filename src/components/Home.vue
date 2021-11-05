@@ -10,7 +10,7 @@
         <h2>Titre : {{ todo.title }}</h2> 
       </div>
   <div>
-     <img class="image-post" v-bind:src=todo.attachment title="post-img" />
+     <img v-if="todo.attachment" class="image-post" v-bind:src=todo.attachment title="post-img" />
   </div>
   <div class="description">
     <p>{{ todo.content }}</p>
@@ -32,6 +32,7 @@ export default {
       return {
         todos: [],
         id: 'Number',
+        attachment: "",
         
       };  
     },
@@ -49,10 +50,6 @@ export default {
                 })
               
             },
-  
-  components: {
-  
-  }
 }
 </script>
 
@@ -78,8 +75,8 @@ h2{
     font-size: 1.2rem;
 }
 img{
-  width: 16rem;
-  height: 8rem;
+  width: -webkit-fill-available;
+    margin: 10px;
 }
 h3 {
   margin: 40px 0 0;

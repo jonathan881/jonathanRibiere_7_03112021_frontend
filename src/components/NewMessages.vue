@@ -38,7 +38,7 @@ export default {
     data() {
         return {
             title: null,
-            file: '',
+            file: null,
             content: null,
             preview: null,
             errMsg: null,
@@ -108,5 +108,9 @@ h2{
 }
 .selectImage{
     width: 80%;
+}
+.preview{
+    width: -webkit-fill-available;
+    margin: 10px;
 }
 </style>
