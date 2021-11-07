@@ -1,7 +1,7 @@
 <template >
 
 <div id="app">
-  <div class="app_titre">Partager avec nous vos souvenire :</div>
+  <div class="app_titre">Partager avec nous vos souvenires :</div>
   <div class="post" v-for="todo of todos" :key="todo.id" >
     <div> 
     <p class="userName">Message envoyée par : {{ todo.User.username }}</p> 
@@ -18,6 +18,9 @@
   <div class="date">
     {{ todo.createdAt }}
   </div>
+  <div>
+    <i v-if="userId == todo.userId || isAdmin == 'true'" v-on:click="deletePost(todos.id)" class="displayPost__item__option__button far fa-trash-alt" aria-label="Supprimer le message"></i>
+  </div>
   
   </div>
 </div>
@@ -33,6 +36,9 @@ export default {
         todos: [],
         id: 'Number',
         attachment: "",
+        isAdmin: localStorage.getItem("isAdmin"),
+        userId: localStorage.getItem('userId'),
+                username: localStorage.getItem('username'),
         
       };  
     },
@@ -50,6 +56,25 @@ export default {
                 })
               
             },
+            // Permet de supprimer un message
+            deletePost(id) {
+                const messageId = id;
+               
+                axios.delete('http://localhost:3000/api/messages/' + messageId, {
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(() => {
+                    this.created();
+                })
+                 .catch(error => {
+                    const msgerror = error.response.data
+                    this.notyf.error(msgerror.error)
+                })
+            },
+          
 }
 </script>
 

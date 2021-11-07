@@ -1,34 +1,33 @@
 <template>
 <div class="message"> 
-<div class="">
-            <h1>Que voulez-vous partager aujourd'hui ?</h1>
-        </div>
+    <div class="">
+        <h1>Que voulez-vous partager aujourd'hui ?</h1>
+    </div>
     <form @submit.prevent="createPost" class="form">
         <h2>Titre de votre message :</h2>
-        <div>
-            <textarea  class="form-control" required placeholder="50 caractères max"
-                aria-label="Titre du post"  name="title" v-model="title"
-                ></textarea>
-        </div>
-         <div id="preview" v-if="preview">
-                <img class="preview" :src="preview" :alt="preview">
-            </div>                        
-                <div class="form-group">Choisir une image (jpg, gif, png)> <br>
-                <label>Ajouter une photo   <small>(optionnel)</small></label>
-                    <input title="post-img" type="file" ref="file"  enctype="multipart/form-data" name="file" class="selectImage"  id="file" @change="selectFile">    
-                    </div>
-
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea rows="5" required v-model="content" class="form-control"  name="image" placeholder="300 caractères max, sans caractère spécial" ></textarea>
-                    </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Envoyer</button>   		       
-                    </div>
-                <p>{{errMsg}}</p> 
-            </form>
-            </div>
+    <div>
+        <textarea  class="form-control" required placeholder="50 caractères max"
+            aria-label="Titre du post"  name="title" v-model="title">
+        </textarea>
+    </div>
+    <div id="preview" v-if="preview">
+        <img class="preview" :src="preview" :alt="preview">
+    </div>                        
+    <div class="form-group">Choisir une image (jpg, gif, png)> <br>
+        <label>Ajouter une photo   <small>(optionnel)</small></label>
+            <input title="post-img" type="file" ref="file"  enctype="multipart/form-data" name="file" class="selectImage"  id="file" @change="selectFile">    
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea rows="5" required v-model="content" class="form-control"  name="image" placeholder="300 caractères max, sans caractère spécial" ></textarea>
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+    <p>{{errMsg}}</p> 
+    </form>
+    </div>
 </template>
 
 <script>
@@ -88,10 +87,10 @@ export default {
 }
 </script>
 <style  scoped>
-.message{
+.message {
     width: 100%;
 }
-h1{
+h1 {
     margin-top: 1rem;
     font-size: initial;
 }
@@ -101,16 +100,16 @@ h1{
     margin-left: 20%;
     margin-right: 20%;
 }
-h2{
+h2 {
     font-size: initial;
 }
-.form-group{
+.form-group {
     font-size: small;
 }
-.selectImage{
+.selectImage {
     width: 80%;
 }
-.preview{
+.preview {
     width: -webkit-fill-available;
     margin: 10px;
 }

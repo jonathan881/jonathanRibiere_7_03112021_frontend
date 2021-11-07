@@ -33,7 +33,7 @@ export default {
             email: "",
             password: "",
             username: "",
-                    }
+        }
     },
     methods: {
        

@@ -21,7 +21,7 @@
                 <input type="submit" class="submitBtn" value="S'inscrire !" />
             </div>
            <div class="ContainerMsgErr">
-            <p class="signupMsgErr">{{ signupErrorMsg }}</p>
+            <p class="my-3 text-danger">{{ signupErrorMsg }}</p>
             </div>
         </form>
         <div>
